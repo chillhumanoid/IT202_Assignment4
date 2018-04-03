@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>ECP Login</title>
+		<link rel="stylesheet" href="styles/styles.css">
+	</head>
+
+	<body>
+		<div id = "main">
+			<form action="">
+				<table>
+					<tr>
+						<th colspan="4">Event Center Portal</th>
+					</tr>
+					<tr>
+						<td class = "labels">Customer ID:</td>
+						<td colspan="2"><input type="text" name="custID" id="custID"></td>
+						<td id ="nameReq">REQUIRED</td>
+					</tr>
+					<tr>
+						<td class="labels">Passord</td>
+						<td colspan="2"><input type="password" name="custPass" id="custPass"></td>
+						<td id = "idReq">REQUIRED</td>
+					</tr>
+					<tr>
+						<td colspan="3"></td>
+						<td><input type="button" value="LOGIN" onclick="validateForm();return false"></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</body>
+</html>
