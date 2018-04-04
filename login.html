@@ -8,24 +8,26 @@
 
 	<body>
 		<div id = "main">
-			<form action="">
+			<form action="login.php" method="get">
 				<table>
 					<tr>
 						<th colspan="4">Event Center Portal</th>
 					</tr>
 					<tr>
 						<td class = "labels">Customer ID:</td>
-						<td colspan="2"><input type="text" name="custID" id="custID"></td>
-						<td id ="nameReq">REQUIRED</td>
+						<td colspan="2"><input type="text" name="custID" id="custID" required></td>
 					</tr>
 					<tr>
-						<td class="labels">Passord</td>
-						<td colspan="2"><input type="password" name="custPass" id="custPass"></td>
-						<td id = "idReq">REQUIRED</td>
+						<td class="labels">Password</td>
+						<td colspan="2"><input type="password" name="custPass" id="custPass" required></td>
 					</tr>
 					<tr>
-						<td colspan="3"></td>
-						<td><input type="button" value="LOGIN" onclick="validateForm();return false"></td>
+						<td>
+							<input type="button" value="CREATE NEW ACCOUNT" onclick="createnew.php"/>
+						</td>
+						<td>
+							<input type="button" value="LOGIN" onclick="login.php"/>
+						</td>
 					</tr>
 				</table>
 			</form>
