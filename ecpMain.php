@@ -1,5 +1,6 @@
 <?php
-	include("login.php");
+	session_start();
+	include 'include/header.php';
 ?>
 <html>
 	<head>
@@ -13,17 +14,18 @@
 			<form action="">
 				<table>
 					<tr>
-						<th colspan="4">Event Center Portal</th>
+						<th colspan="2">Event Center Portal</th>
 					</tr>
 					<tr>
-						<td class = "labels">Customer ID:</td>
-						<td colspan="2"><?php $id ?></td>
+						<td class = "labels">Customer ID:   <?php echo $_SESSION[id]; ?></td>
 					</tr>
 					<tr>
 						<td>Select a transaction: <select>
 							<option value="reservation">Reservation</option>
 							<option value="accInfo">Account Information</option>
 							<option value="regAcc">Register/Create Account</option></select></td>
+					</tr>
+					<tr>
 						<td colspan="3"><input type="button" value="Continue" onclick=""></td>
 					</tr>
 				</table>

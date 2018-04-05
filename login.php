@@ -2,14 +2,17 @@
 	include("include/config.php");
 	session_start();
 	if(isset($_POST['submit'])){
-		$id = mysqli_real_escape_string($db,$_POST['custID']);
-		$pass = mysqli_real_escape_string($db,$_POST['custPass']);
+		$_SESSION['id'] = mysqli_real_escape_string($db,$_POST['custID']);
+		$_SESSION['pass'] = mysqli_real_escape_string($db,$_POST['custPass']);
+		$id = $_SESSION['id'];
+		$pass = $_SESSION['pass'];
 		$sql = "SELECT * FROM logins where custID = '$id' AND custPass = '$pass'";
 		$result = mysqli_query($db, $sql);
 		if($result->num_rows == 0){
 			$error_msg = "invalid customer ID or Password";
 		}else{
-			header('Location: ecpMain.php');
+			header('Location: https://web.njit.edu/~jgt8/Assignment4/ecpMain.php');
+			exit;
 		}
 	}
 	if(isset($_POST['newAccount'])){
@@ -24,6 +27,7 @@
 			$sql = "INSERT INTO logins (custID, custPass) VALUES ($id, '$pass')";
 			if (mysqli_query($db, $sql)){
 				header('Location: creationsuccess.php');
+				exit;
 			}else{
 				$error_msg = "Make sure customer ID is numbers only";
 			}
