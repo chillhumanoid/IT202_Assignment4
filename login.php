@@ -1,16 +1,31 @@
 <?php
 	include("include/config.php");
 	session_start();
-	if($_SERVER["REQUEST_METHOD"] == "POST"){
+	if(isset($_POST['submit'])){
 		$id = mysqli_real_escape_string($db,$_POST['custID']);
 		$pass = mysqli_real_escape_string($db,$_POST['custPass']);
-
 		$sql = "SELECT * FROM logins where custID = '$id' AND custPass = '$pass'";
 		$result = mysqli_query($db, $sql);
 		if($result->num_rows == 0){
 			$error_msg = "invalid customer ID or Password";
 		}else{
 			header('Location: https://web.njit.edu/~jgt8/Assignment2/assignment2.html');
+		}
+	}else if(isset($_POST['newAccount'])){
+		$id = mysqli_real_escape_string($db,$_POST['custID']);
+    $pass = mysqli_real_escape_string($db,$_POST['custPass']);
+
+		$sql = "SELECT * FROM logins where custID = '$id'";
+		$result = mysqli_query($db,$sql);
+		if($result->num_rows == 1){
+			$error_msg = "Customer ID taken";
+		}else if($result->num_rows == 0){
+			$sql = "INSERT INTO logins (custID, custPass) VALUES ($id, '$pass')";
+			if (mysqli_query($db, $sql)){
+				header('Location: creationsuccess.php');
+			}else{
+				$error_msg = "Error: " . $sql . "<br>" . mysqli_error($db);
+			}
 		}
 	}
 ?>
@@ -30,15 +45,15 @@
 					</tr>
 					<tr>
 						<td class = "labels">Customer ID:</td>
-						<td colspan="2"><input type="text" name="custID" id="custID" required></td>
+						<td colspan="2"><input type="text" name="custID" id="custID" maxlength="8" required></td>
 					</tr>
 					<tr>
 						<td class="labels">Password</td>
-						<td colspan="2"><input type="password" name="custPass" id="custPass" required></td>
+						<td colspan="2"><input type="password" name="custPass" id="custPass" maxlength="14" required></td>
 					</tr>
 					<tr>
 						<td>
-							<input type="button" name = "newAccount" value="CREATE NEW ACCOUNT" onclick="createnew.php"/>
+							<input type="submit" name = "newAccount" value="CREATE NEW ACCOUNT"/>
 						</td>
 						<td>
 							<input type="submit" name = "submit" value="login" />
