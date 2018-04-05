@@ -2,10 +2,11 @@
 	session_start();
 	include 'include/header.php';
   include 'include/config.php';
-	if(isset($_POST['options']) && $_POST['options']==='view'){
-		header('Location: https://web.njit.edu/~jgt8/Assignment4/newReservations.php');
-    exit;
-	}
+  if(isset($_POST['submit'])){
+	   if(isset($_POST['eventType']) && $_POST['eventType'] === ''){
+		     $error_msg = "Please fill in event type";
+	   }
+   }
 ?>
 <html>
 	<head>
@@ -48,7 +49,7 @@
 					<tr>
 						<td>Date</td>
 						<td>
-              <input type ="date" name ="eventDate" />
+              <input type ="date" name ="eventDate" required/>
 						</td>
 					</tr>
           <tr>
@@ -197,10 +198,13 @@
             </td>
           </tr>
 					<tr>
-						<td colspan="3"><input class = "buttons" type="submit" value="Submit"></td>
+						<td colspan="3"><input class = "buttons" type="submit" value="Submit" name="submit"></td>
 					</tr>
 				</table>
 			</form>
+      <Center>
+				<div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $error_msg; ?></div>
+			</Center>
 		</div>
 	</body>
 </html>
