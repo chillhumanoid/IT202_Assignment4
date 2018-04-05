@@ -9,7 +9,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>newReservations</title>
+		<title>New Rervation - ECP</title>
 		<link rel="stylesheet" href="styles/styles.css">
 	</head>
 
