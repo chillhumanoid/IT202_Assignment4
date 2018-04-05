@@ -17,16 +17,21 @@
 						<th colspan="2">Event Center Portal</th>
 					</tr>
 					<tr>
-						<td class = "labels">Customer ID:   <?php echo $_SESSION[id]; ?></td>
+						<td class = "labels">Customer ID:</td>
+						<td>
+							<?php echo $_SESSION[id]; ?>
+						</td>
 					</tr>
 					<tr>
-						<td>Select a transaction: <select>
+						<td>Select a transaction:</td>
+						<td>
+						<select>
 							<option value="reservation">Reservation</option>
 							<option value="accInfo">Account Information</option>
-							<option value="regAcc">Register/Create Account</option></select></td>
+						</td>
 					</tr>
 					<tr>
-						<td colspan="3"><input type="button" value="Continue" onclick=""></td>
+						<td colspan="3"><input class = "buttons" type="button" value="Continue" onclick=""></td>
 					</tr>
 				</table>
 			</form>

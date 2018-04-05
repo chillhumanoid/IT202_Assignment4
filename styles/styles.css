@@ -15,6 +15,13 @@ td{
 .labels{
 	text-align: left;
 }
+.labels2{
+	text-align: right;
+}
 #centerMessage{
 	text-align: center;
+}
+
+.buttons{
+	width: 200px;
 }
