@@ -9,7 +9,7 @@
 		if($result->num_rows == 0){
 			$error_msg = "invalid customer ID or Password";
 		}else{
-			header('Location: https://web.njit.edu/~jgt8/Assignment2/assignment2.html');
+			header('Location: ecpMain.php');
 		}
 	}
 	if(isset($_POST['newAccount'])){
