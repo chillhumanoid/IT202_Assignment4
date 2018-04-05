@@ -4,7 +4,7 @@ h1{
 table{
 	margin:auto;
 	border-collapse: collapse;
-	background-color: gray;
+	background-color: #a8a6a6;
 }
 table, th, td{
 	border: 1px solid black;
