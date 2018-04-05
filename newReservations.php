@@ -4,8 +4,49 @@
   include 'include/config.php';
   if(isset($_POST['submit'])){
 	   if(isset($_POST['eventType']) && $_POST['eventType'] === ''){
-		     $error_msg = "Please fill in event type";
-	   }
+       $error_msg = "Please fill in event type";
+	   }else{
+       $_SESSION['eventType'] = mysqli_real_escape_string($db,$_POST['eventType']);
+       $_SESSION['eventDate'] = mysqli_real_escape_string($db,$_POST['eventDate']);
+       $eventType = $_SESSION['eventType'];
+       $eventDate = $_SESSION['eventDate'];
+       $sup1 = mysqli_real_escape_string($db,$_POST['supplies1']);
+       if(empty($sup1)){
+         $sup1 = " ";
+       }
+       $sup2 = mysqli_real_escape_string($db,$_POST['supplies2']);
+       if(empty($sup2)){
+         $sup2 = " ";
+       }
+       $sup3 = mysqli_real_escape_string($db,$_POST['supplies3']);
+       if(empty($sup3)){
+         $sup3 = " ";
+       }
+       $sup4 = mysqli_real_escape_string($db,$_POST['supplies4']);
+       if(empty($sup4)){
+         $sup4 = " ";
+       }
+       $sup5 = mysqli_real_escape_string($db,$_POST['supplies5']);
+       if(empty($sup5)){
+         $sup5 = " ";
+       }
+       $id = $_SESSION[id];
+       $sql = "SELECT * FROM reservations where custID = '$id'";
+       $result = mysqli_query($db, $sql);
+      if($result->num_rows >= 5){
+        $error_msg = "Max events at a time is 5";
+      }else{
+				$sql = "INSERT INTO reservations (custID, eventType, date, supplies1, supplies2, supplies3, supplies4, supplies5)
+                 VALUES ($id, '$eventType', '$eventDate', '$sup1', '$sup2', '$sup3', '$sup4', '$sup5')";
+				if (mysqli_query($db, $sql)){
+					$_SESSION['eventCreated'] = TRUE;
+				 	header('Location: https://web.njit.edu/~jgt8/Assignment4/newressuccess.php');
+				 	exit;
+				}else{
+					$error_msg = "Error: " . $sql . "<br>" . mysqli_error($db);
+	 			}
+      }
+     }
    }
 ?>
 <html>
@@ -198,7 +239,10 @@
             </td>
           </tr>
 					<tr>
-						<td colspan="3"><input class = "buttons" type="submit" value="Submit" name="submit"></td>
+						<td>
+							<input type = "button" value="Back" onclick="window.location.href='https://web.njit.edu/~jgt8/Assignment4/ecpMain.php'"/>
+						</td>
+						<td colspan="2"><input type="submit" value="Submit" name="submit"/></td>
 					</tr>
 				</table>
 			</form>
