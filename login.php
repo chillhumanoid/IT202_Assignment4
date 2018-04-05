@@ -11,7 +11,8 @@
 		}else{
 			header('Location: https://web.njit.edu/~jgt8/Assignment2/assignment2.html');
 		}
-	}else if(isset($_POST['newAccount'])){
+	}
+	if(isset($_POST['newAccount'])){
 		$id = mysqli_real_escape_string($db,$_POST['custID']);
     $pass = mysqli_real_escape_string($db,$_POST['custPass']);
 
@@ -24,10 +25,11 @@
 			if (mysqli_query($db, $sql)){
 				header('Location: creationsuccess.php');
 			}else{
-				$error_msg = "Error: " . $sql . "<br>" . mysqli_error($db);
+				$error_msg = "Make sure customer ID is numbers only";
 			}
 		}
 	}
+
 ?>
 <html>
 	<head>
@@ -45,7 +47,7 @@
 					</tr>
 					<tr>
 						<td class = "labels">Customer ID:</td>
-						<td colspan="2"><input type="text" name="custID" id="custID" maxlength="8" required></td>
+						<td colspan="2"><input type="text" name="custID" id="custID" minlength="8" maxlength="8" required></td>
 					</tr>
 					<tr>
 						<td class="labels">Password</td>
