@@ -1,18 +1,14 @@
 <?php
 	session_start();
 	include 'include/header.php';
-	if(isset($_POST['options']) && $_POST['options']==='new'){
-		header('Location: https://web.njit.edu/~jgt8/Assignment4/newReservations.php');
-		exit;
-	}else if(isset($_POST['options']) && $_POST['options']==='view'){
-		header('Location: https://web.njit.edu/~jgt8/Assignment4/viewReservations.php');
-		exit;
+	if(isset($_POST['options']) && $_POST['options']==='view'){
+		header('Location: ')
 	}
 ?>
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Event Center Portal</title>
+		<title>viewReservations</title>
 		<link rel="stylesheet" href="styles/styles.css">
 	</head>
 
