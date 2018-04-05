@@ -2,7 +2,8 @@
 	session_start();
 	include 'include/header.php';
 	if(isset($_POST['options']) && $_POST['options']==='view'){
-		header('Location: ')
+		header('Location: https://web.njit.edu/~jgt8/Assignment4/newReservations.php');
+    exit;
 	}
 ?>
 <html>
