@@ -18,10 +18,10 @@ td{
 .labels2{
 	text-align: right;
 }
-#centerMessage{
+.centerMessage{
 	text-align: center;
 }
 
 .buttons{
-	width: 200px;
+	width: 150px;
 }

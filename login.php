@@ -59,10 +59,10 @@
 					</tr>
 					<tr>
 						<td>
-							<input class = "buttons" type="submit" name = "newAccount" value="Create New Account"/>
+							<input type="submit" name = "newAccount" value="Create New Account"/>
 						</td>
 						<td>
-							<input class = "buttons" type="submit" name = "submit" value="Login" />
+							<input type="submit" class = "buttons" name = "submit" value="Login" />
 						</td>
 					</tr>
 				</table>

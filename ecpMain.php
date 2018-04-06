@@ -1,12 +1,19 @@
 <?php
 	session_start();
 	include 'include/header.php';
-	if(isset($_POST['options']) && $_POST['options']==='new'){
-		header('Location: https://web.njit.edu/~jgt8/Assignment4/newReservations.php');
-		exit;
-	}else if(isset($_POST['options']) && $_POST['options']==='view'){
-		header('Location: https://web.njit.edu/~jgt8/Assignment4/viewReservations.php');
-		exit;
+	if(isset($_POST['continue'])){
+		if(isset($_POST['options']) && $_POST['options']==='new'){
+			header('Location: https://web.njit.edu/~jgt8/Assignment4/newReservations.php');
+			exit;
+		}else if(isset($_POST['options']) && $_POST['options']==='view'){
+			header('Location: https://web.njit.edu/~jgt8/Assignment4/viewReservations.php');
+			exit;
+		}
+	}else if(isset($_POST['logout'])){
+		session_unset();
+		session_destroy();
+		header("Location: login.php");
+		exit();
 	}
 ?>
 <html>
@@ -38,7 +45,10 @@
 						</td>
 					</tr>
 					<tr>
-						<td colspan="3"><input class = "buttons" type="submit" value="Continue"></td>
+						<td>
+							<input type="submit" name="logout"value="logout" />
+						</td>
+						<td><input type="submit" name="continue" value="Continue"></td>
 					</tr>
 				</table>
 			</form>
